@@ -11,9 +11,8 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen>
-    with SingleTickerProviderStateMixin {
-  AnimationController controller;
+class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin { //mixins provide timing control for animations.
+  AnimationController controller;     //controller needed to make animations happen
   Animation animation;
 
   @override
@@ -22,9 +21,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
     controller =
         AnimationController(duration: Duration(seconds: 1), vsync: this);
-    animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)
+    animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)     //code responsible for grey to white transition on app startup
         .animate(controller);
-    controller.forward();
+    controller.forward();     //0 to 100, only goes forwards
     controller.addListener(() {
       setState(() {});
     });
@@ -56,7 +55,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   ),
                 ),
                 TypewriterAnimatedTextKit(
-                  text: ['Flash Chat'],
+                  text: ['KU Collaboration'],
                   textStyle: TextStyle(
                     fontSize: 45.0,
                     fontWeight: FontWeight.w900,
@@ -78,7 +77,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               title: 'Register',
               colour: Colors.blueAccent,
               onPressed: () {
-                Navigator.pushNamed(context, RegistrationScreen.id);
+                Navigator.pushNamed(context, RegistrationScreen.id);      //Two rounded buttons to click and route to different page by
               },
             ),
           ],
