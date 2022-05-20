@@ -23,15 +23,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
         AnimationController(duration: Duration(seconds: 1), vsync: this);
     animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)     //code responsible for grey to white transition on app startup
         .animate(controller);
-    controller.forward();     //0 to 100, only goes forwards
-    controller.addListener(() {
+    controller.forward();     //animation controller only goes forwards
+    controller.addListener(() { //Always listneing for changes and updates app state once it does. Thats how the light changes from grey to white smoothly for the app
       setState(() {});
     });
   }
 
   @override
   void dispose() {
-    controller.dispose();
+    controller.dispose();     //you need to dispose animation controller once ur done with it or it will keep running in the background
     super.dispose();
   }
 
@@ -47,14 +47,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
           children: <Widget>[
             Row(
               children: <Widget>[
-                Hero(
-                  tag: 'logo',
+                Hero(         //Hero widgets wrap images to transition between one app page and another. Its a built in animation class basically.
+                  tag: 'logo',      //logo transitions from this page to login or register screen
                   child: Container(
                     child: Image.asset('images/logo.png'),
                     height: 60.0,
                   ),
                 ),
-                TypewriterAnimatedTextKit(
+                TypewriterAnimatedTextKit(    //This is imported class from that package. Its not written by me but basically shows type writer animation of text
                   text: ['KU Collaboration'],
                   textStyle: TextStyle(
                     fontSize: 45.0,
