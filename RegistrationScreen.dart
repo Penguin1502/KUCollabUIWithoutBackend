@@ -1,3 +1,5 @@
+//Identical to login screen - see it for directions whats what here
+
 import 'package:flutter/material.dart';
 import 'package:flash_chat/components/rounded_button.dart';
 import 'package:flash_chat/constants.dart';
@@ -21,7 +23,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ModalProgressHUD(
+      body: ModalProgressHUD(       //wrap whole entire widget contents in modal HUD so that everything can be replaced with a spinning circle when something is loading.
         inAsyncCall: showSpinner,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
