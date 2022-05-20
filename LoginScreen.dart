@@ -12,7 +12,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool showSpinner = false;
+  bool showSpinner = false;     //starts by default so that u don't have a spinning circle when typing in login information.  for modalprogress hud class
   //final _auth = FirebaseAuth.instance;
   String email;
   String password;
@@ -21,8 +21,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ModalProgressHUD(
-        inAsyncCall: showSpinner,
+      body: ModalProgressHUD(     //this shows spinning circle until data is called. 
+        inAsyncCall: showSpinner,   //showSpinner true means its showing false means not
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Flexible(
-                child: Hero(
+                child: Hero(    //Other pair of Hero widget to match with the Welcome screen's Hero widget and provide a transition of the logo between there and here
                   tag: 'logo',
                   child: Container(
                     height: 200.0,
@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   email = value;
                 },
                 decoration:
-                    kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
+                    kTextFieldDecoration.copyWith(hintText: 'Enter your email'),    //all decoration called from constants class, with a change here being "enter your email" not password
               ),
               SizedBox(
                 height: 8.0,
@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 colour: Colors.lightBlueAccent,
                 onPressed: () async {
                   setState(() {
-                    showSpinner = true;
+                    showSpinner = true;     //Show spinner true when pressing a button. this is because its fetching backend data and signing user in
                   });
                   try {
                 //    final user = await _auth.signInWithEmailAndPassword(
@@ -80,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 //    }
 
                     setState(() {
-                      showSpinner = false;
+                      showSpinner = false;    //when the route can navigate to other page show spinner becomes false. No more rotating circle
                     });
                   } catch (e) {
                     print(e);
